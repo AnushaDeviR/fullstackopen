@@ -94,5 +94,16 @@ data.forEach(function(note) {
 document.getElementsByClassName('notes').appendChild(ul)
 ```
 
-From the above code, new child nodes are created (`ul`) which is referred by the class name `notes`. 
+From the above code, new child nodes are created (`ul`) which is referred by the class name `notes`.
 
+## Manipulating the document object from console
+
+The root of the DOM tree in a HTML document is called the `document` object. By typing `document` on the console, the DOM tree can be accessed.
+<br>
+<img src="./dom-console.png">
+<br>
+
+Eg.: By getting the element using its tag name `ul`, a new list can be appended to the notes list on the webpage. Although the below changes reflected on the web are not permanent as they are just happening on our browser and are not updated on the main server.
+<br>
+<img src="./dom1.png">
+<br>
