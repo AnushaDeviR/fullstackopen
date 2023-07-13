@@ -67,5 +67,8 @@ Ref.: https://dev.to/spukas/http-headers-explained-4kg1 <br>
 
 ## Traditional web applications
 
-In a traditional web application, when an URL is accessed through the browser, it fetches the HTML document containing the structure and textual details of the accessing page from the server. The HTML document could either be static (file saved on the server) or dynamic (server forms the file with the application code, eg.: data from database). 
+In a traditional web application, when an URL is accessed through the browser, it fetches the HTML document containing the structure and textual details of the accessing page from the server. The HTML document could either be static (file saved on the server) or dynamic (server forms the file with the application code, eg.: data from database).
 
+## Running application logic in the browser
+
+The browser fetches the HTML as the first document, from that page it fetches the JavaScript file from the script tag from the `head` section of the HTML code.
