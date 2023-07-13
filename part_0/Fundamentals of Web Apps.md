@@ -72,3 +72,7 @@ In a traditional web application, when an URL is accessed through the browser, i
 ## Running application logic in the browser
 
 The browser fetches the HTML as the first document, from that page it fetches the JavaScript file from the script tag from the `head` section of the HTML code.
+
+## Event handlers and Callback functions
+
+Event handler are known as callback (a function passed into another function as input) functions. The browsers invoke the event handlers when the event on the webpage has occurred.
