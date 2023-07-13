@@ -71,8 +71,28 @@ In a traditional web application, when an URL is accessed through the browser, i
 
 ## Running application logic in the browser
 
-The browser fetches the HTML as the first document, from that page it fetches the JavaScript file from the script tag from the `head` section of the HTML code.
+The browser fetches the HTML as the first document, from that page it fetches the JavaScript file from the script tag from the `head` element of the HTML code.
 
 ## Event handlers and Callback functions
 
 Event handler are known as callback (a function passed into another function as input) functions. The browsers invoke the event handlers when the event on the webpage has occurred.
+
+## Document Object Model (DOM)
+
+HTML pages are implemented in a tree-like structure. Document Object Model (DOM) is an Application Programming Interface (API) that allows modifications of the elements to reflect on webpages. <br>
+
+```
+var ul = document.createElement('ul')
+
+data.forEach(function(note) {
+  var li = document.createElement('li')
+
+  ul.appendChild(li)
+  li.appendChild(document.createTextNode(note.content))
+})
+
+document.getElementsByClassName('notes').appendChild(ul)
+```
+
+From the above code, new child nodes are created (`ul`) which is referred by the class name `notes`. 
+
