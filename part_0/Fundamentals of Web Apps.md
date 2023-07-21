@@ -107,3 +107,66 @@ Eg.: By getting the element using its tag name `ul`, a new list can be appended 
 <br>
 <img src="./dom1.png">
 <br>
+
+## Cascading Style Sheets (CSS)
+
+CSS is a style sheet language used to determine the appearance of the website. <br>
+
+```
+.container {
+  padding: 10px;
+  border: 1px solid;
+}
+
+.notes {
+  color: blue;
+}
+```
+
+The `.container` and `.notes` are known as class selectors, these are used to select certain parts of the page to define rules for styling. These classes are attributes that are then added to HTML elements in order for the stylings to reflect of HTML elements.
+
+- Elements tab on developer tool can be used to alter the stylings, this only reflects on the website and are not saved on the server: <br>
+  <img src="./elements-tool.png" width="600" height="350"> <br>
+
+## Loading a page containing JavaScript - review
+
+- Sequence Diagram of request and response of the notes page: (https://studies.cs.helsinki.fi/exampleapp/notes): <br>
+  <img src="./seq-req-res-notesPage.png" width="700" height="500"> <br>
+
+Process:
+
+- Browser → [GET] The browser requests the HTML code (which contains the content and page structure) from the server for the [page](https://studies.cs.helsinki.fi/exampleapp/notes).
+- Server → Sends requested HTML document to the browser.
+- Browser → [GET] Requests the main.css file for the page from the server.
+- Server → Sends the requested css file.
+- Browser → [GET] Requests the Js file for the file from the server.
+- Server → Sends the requested JS file and the browser starts executing it.
+- Browser → [GET] Upon executing the JS file, the browser requests to fetch the data.json file from the server.
+- Server → Sends the json object to the browser and it executes event handler that renders the notes to the page using DOM-API.
+
+## Forms and HTTP POST
+
+The notes page contains a `form element`, here when the button `Save` is clicked the browser sends the user input to the server. The action of sending data from the browser to the server is known as `POST` request.
+
+- Network Traffic when adding a new note: <br>
+  <img src="./network-post.png" width="700" height="350"> <br>
+
+While submitting the new note, the first HTTP request occurs from the `form submit event` which is a HTTP POST request to the server. The server then responds with the `302` status code which is an URL redirect (the server requests the browser to do a new HTTP GET request to the new address in header's location). Once this is done, the browser reloads the page creating 3 GET requests of requesting main.css, main.js and data.json.
+
+The `Form` element has attributes called: action and method that needs to be defined when submitting the form in HTML.
+<img src="./form-method-action.png"> <br>
+
+Below is the code on the server that is responsible for the POST method defined on the form element.
+
+```
+app.post('/new_note', (req, res) => {
+  notes.push({
+    content: req.body.note, # contains the actual content of the note
+    date: new Date(), # contains the date-time of the created note
+  })
+
+  return res.redirect('/notes')
+})
+```
+
+The data is sent as the `body` from the POST request which the server then accesses by `req.body` from the request object. The server then creates a new note object and pushes it to the notes array. Since the array is not saved on the database, these new notes are disappeared when the server is restarted.
