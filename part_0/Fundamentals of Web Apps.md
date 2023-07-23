@@ -170,3 +170,22 @@ app.post('/new_note', (req, res) => {
 ```
 
 The data is sent as the `body` from the POST request which the server then accesses by `req.body` from the request object. The server then creates a new note object and pushes it to the notes array. Since the array is not saved on the database, these new notes are disappeared when the server is restarted.
+
+## Asynchronous JavaScript and XML (AJAX)
+
+- An approach used to fetch content to web-pages using JavaScript that was included within HTML without the need of re-rendering the page.
+- In a traditional web application (i.e. before AJAX), the data on the page was fetched with the generated HTML code from server.
+
+## Single page application (SPA)
+
+- SPA-styled websites don't fetch all the pages separately from the server, instead it fetches the main HTML page that are manipulated with JavaScript executed in the browser.
+
+  <img src="./network-spa.png"> <br>
+
+- While adding a new note at https://studies.cs.helsinki.fi/exampleapp/spa, the browser sends only one request unlike the traditional method.
+
+## JavaScript Libraries 
+
+- The traditional websites used VanillaJs which used only the DOM-API and JS to manipulate the page structure, then jQuery was used due to its popularity in having a cross-browser compatibility. 
+- During the rise of the SPA-styled web apps, BackboneJS was introduced then AngularJs, ReactJs, VueJs, etc. were introduced.
+
