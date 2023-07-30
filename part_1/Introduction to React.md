@@ -179,3 +179,52 @@ const App = () => {
   );
 };
 ```
+
+## Do not render objects
+
+In the application below which prints the names and ages of out friends on screen, it tends to throw an error of "Objects are not valid as a React child", which means that the application is trying to render the objects and it fails over and over again.
+
+```javascript
+const App = () => {
+  const friends = [
+    { name: "Peter", age: 4 },
+    { name: "Maya", age: 10 },
+  ];
+
+  return (
+    <div>
+      <p>{friends[0]}</p>
+      <p>{friends[1]}</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+Error:
+<img src="./objects-error.png">
+
+↑ The error above occurs when `<p> {friends[0]} </p>` is rendering a value from an object: `friends`.
+
+To fix this, the individual values being rendered from the object must be primitive values (numbers, strings) and not the whole object itself.
+
+```javascript
+const App = () => {
+  const friends = [
+    { name: "Peter", age: 4 },
+    { name: "Maya", age: 10 },
+  ];
+
+  return (
+    <div>
+      <p>
+        {friends[0].name}, {friends[0].age}
+      </p>
+      <p>
+        {friends[1].name}, {friends[1].age}
+      </p>
+    </div>
+  );
+};
+```
