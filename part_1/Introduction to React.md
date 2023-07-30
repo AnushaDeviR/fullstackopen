@@ -88,7 +88,7 @@ export default App;
 - Many components can be created and rendered in various pages.
 - The `App` is the root component, but there can be situations where it is not exactly the root component by is wrapped within an appropriate utility component.
 
-## props: passing data to components
+## Props: passing data to components
 
 - Props can be used to pass data to the components
 
@@ -116,6 +116,7 @@ export default App;
   ↑ The function `Hello` is defined with a parameter props. This parameter receives an object which has fields corresponding to all the `props` the user of the component `App` defines. Eg: `<Hello name='John Doe'/>`
 
 - Values of the props can also be sent through JS expressions (while assigning using JS, it must be wrapped using a curly brackets):
+
   ```javascript
   const App = () => {
     const now = new Date();
@@ -130,3 +131,51 @@ export default App;
     );
   };
   ```
+
+## Extra notes
+
+- When creating a new component with React, the component name must be defined with the first letter capitalized; React creates a div-element defined in the creating component and is rendered on the page.
+- The content of the React component usually needs to be wrapped within a root element.
+
+  ```javascript
+  <!-- Here the returning HTML is wrapped using div-element (root element) -->
+    return (
+    <div>
+      <Hello name={"John Doe"} />
+      <Hello name={name} age={age} />
+      <p>The time is {now.toString()}</p>
+    </div>
+  );
+  ```
+
+- Other than wrapping the return using a root element it is also possible to return as an array without wrapping.
+
+  ```javascript
+  const App = () => {
+    const now = new Date();
+    const name = "Jane Doe";
+    const age = 10;
+    return [
+        <Hello name={"John Doe"} />
+        <Hello name={name} age={age} />
+        <p>The time is {now.toString()}</p>
+    ];
+  };
+  ```
+
+- When defining a root component (Eg: App.js) it is not recommended to wrap its returning child components with div-element as it adds extra div elements to the DOM tree, this can be avoided by using fragments, which returns the component with an empty element.
+
+```javascript
+const App = () => {
+  const now = new Date();
+  const name = "Jane Doe";
+  const age = 10;
+  return (
+    <>
+      <Hello name={"John Doe"} />
+      <Hello name={name} age={age} />
+      <p>The time is {now.toString()}</p>
+    </>
+  );
+};
+```
