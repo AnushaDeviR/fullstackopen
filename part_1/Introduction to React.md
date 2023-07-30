@@ -87,3 +87,46 @@ export default App;
 
 - Many components can be created and rendered in various pages.
 - The `App` is the root component, but there can be situations where it is not exactly the root component by is wrapped within an appropriate utility component.
+
+## props: passing data to components
+
+- Props can be used to pass data to the components
+
+  ```javascript
+  const Hello = (props) => {
+    return (
+      <div>
+        <p>Hello {props.name}</p>
+      </div>
+    );
+  };
+  const App = () => {
+    const now = new Date();
+    console.log(now);
+    return (
+      <div>
+        <Hello name="John Doe" />
+        <p>The time is {now.toString()}</p>
+      </div>
+    );
+  };
+  export default App;
+  ```
+
+  ↑ The function `Hello` is defined with a parameter props. This parameter receives an object which has fields corresponding to all the `props` the user of the component `App` defines. Eg: `<Hello name='John Doe'/>`
+
+- Values of the props can also be sent through JS expressions (while assigning using JS, it must be wrapped using a curly brackets):
+  ```javascript
+  const App = () => {
+    const now = new Date();
+    const name = "Jane Doe";
+    const age = 10;
+    return (
+      <div>
+        <Hello name={"John Doe"} />
+        <Hello name={name} age={age} />
+        <p>The time is {now.toString()}</p>
+      </div>
+    );
+  };
+  ```
