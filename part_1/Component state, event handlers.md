@@ -125,3 +125,36 @@ import { useState } from "react"; // useState needs to be imported from react to
 ```
 
 - The first time the `setTimeOut()` function is called, the function body of the component is executed with 1 sec. timeout; the second time it gets executed, it calls the `useState` function and returns the incremented new value in the state.
+
+## Event Handling
+
+- User interaction with different elements on a site can trigger many kinds of events (eg.: clicking a button, checkbox, or typing).
+- Button elements are triggered using mouse events.
+- Cheat sheet to more events -> [Events-Js by shortcode](https://shortcode.dev/javascript-cheatsheet)
+
+### An event handler is a function
+
+- An event handler is a function call and while a change occurs, React re-renders the component and executes the onClick() function only when the button is clicked.
+
+```js
+import { useState }  'react';
+
+const Counter = () => {
+    const [counter, setCounter] = useState(0);
+};
+// recommended to keep the event handlers as a separate function ⇊
+const incrementCounter = () => {
+    setCounter(counter + 1);
+};
+const resetCounter = () => {
+  setCounter(0)
+}
+
+return (
+    <>
+        <p>{counter}</p>
+        <button onClick = {incrementCounter}>Count</button>
+        <button onClick = {resetCounter}>Reset</button>
+    </>
+)
+```
