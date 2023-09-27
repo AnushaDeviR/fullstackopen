@@ -158,3 +158,24 @@ return (
     </>
 )
 ```
+
+## Passing state - to child components
+
+- Recommended to write small and reusable components in React.
+- "In React, it’s conventional to use onSomething names for props which represent events and handleSomething for the function definitions which handle those events." - [React](https://react.dev/learn/tutorial-tic-tac-toe)
+
+## Changes in state cause re-rendering
+
+- From the `counter function` above, when the event handler is called, the state of the component changes (since `useState()` is used) causing the component to re-render.
+
+## Refactoring the components
+
+- Instead of using props as parameters for the component function, `destructuring` can also be used with `destructuring`.
+
+````js
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>
+    {text}
+  </button>
+)```
+````
