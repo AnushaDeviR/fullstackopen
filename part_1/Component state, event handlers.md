@@ -172,10 +172,8 @@ return (
 
 - Instead of using props as parameters for the component function, `destructuring` can also be used with `destructuring`.
 
-````js
+```js
 const Button = ({ handleClick, text }) => (
-  <button onClick={handleClick}>
-    {text}
-  </button>
-)```
-````
+  <button onClick={handleClick}>{text}</button>
+);
+```
