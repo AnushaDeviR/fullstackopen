@@ -60,3 +60,4 @@ const handleRightClicks = () => {
   setClicks(newClicks);
 };
 ```
+- Below is an approach that is not recommended to be used in React as it creates mutate state directly and is forbidden in React. This causes unexpected side effects. Changing state has to always be done by setting the state to a new object.
