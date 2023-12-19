@@ -84,3 +84,41 @@ const handleConcatClear = () => {
 ```
 
 - The state stored in `allClicks` is an array which stores the previous state and the letter (L, R). The `concat()` is a method used to add a new item and it does not mutate the existing array instead creates a new copy of the array with the added item to it. This abides the rules of React of not mutating a state directly, an alternative method instead of using `concat()` would be `push()` which mutates the state directly that should not be used.
+
+## Update of the state is asynchronous
+
+- After adding a state to keep track of the total clicks, it is notable from the console log (ref. image) that even after a new value is set for `left` by calling `setLeft()` it is not reflected immediately. This is because of React's nature of updating the state in an asynchronous way that it would reflect at some point before the component is re-rendered.
+
+```js
+const handleLeftConcat = () => {
+  setAllClicks(allClicks.concat("L"));
+  console.log("left before: ", left);
+  setLeft(left + 1);
+  console.log("left after: ", left);
+  setTotal(left + right);
+};
+```
+
+![State update in React happens asynchronously](asynchronous-state-update-react.png)
+
+- To resolve this behavior, a new variable can be declared for updating the value:
+
+```js
+const handleLeftConcat = () => {
+  setAllClicks(allClicks.concat("L"));
+  console.log("left before: ", left);
+  const updateLeft = left + 1; //new variable
+  setLeft(updateLeft);
+  console.log("left after: ", left);
+  setTotal(updateLeft + right);
+};
+
+const handleRightConcat = () => {
+  setAllClicks(allClicks.concat("R"));
+  const updateRight = right + 1;
+  setRight(updateRight);
+  setTotal(left + updateRight);
+};
+```
+
+![Fix for React's asynchronous state behavior](asynchronous-state-update-react-fix.png)
