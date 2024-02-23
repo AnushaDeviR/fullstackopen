@@ -122,3 +122,24 @@ const handleRightConcat = () => {
 ```
 
 ![Fix for React's asynchronous state behavior](asynchronous-state-update-react-fix.png)
+
+## Conditional Rendering
+
+- Conditional rendering allows to render entirely different React components based on the state of the application.
+
+```js
+const History = (props) => {
+  /*
+    The following function renders the div component through conditional rendering.
+  */
+  if (props.allClicks.length === 0) {
+    return <div>the app is used by pressing the button</div>;
+  }
+  return <div> button press history: {props.allClicks.join("")}</div>;
+};
+```
+
+## Old React
+
+- From React version 16.8.0 onwards the `state hook` was added in order to implement states to React components.
+- Before the addition of hooks (in functional components), state could only be defined as a class component.
