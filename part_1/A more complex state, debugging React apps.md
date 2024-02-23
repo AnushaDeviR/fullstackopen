@@ -162,3 +162,35 @@ const History = (props) => {
       return <button onClick={handleClick}>{text}</button>;
     };
     ```
+
+## Rules of Hooks
+
+- The `useState & useEffect` (hooks) function should not be used inside a loop, a conditional expression or any functions which doesn't define a component.
+- Hooks should only be called from the inside of a function body that defines a React component.
+
+```jsx
+const App = () => {
+  // these are ok
+  const [age, setAge] = useState(0)
+  const [name, setName] = useState('Juha Tauriainen')
+
+  if ( age > 10 ) {
+    // this does not work!
+    const [foobar, setFoobar] = useState(null)
+  }
+
+  for ( let i = 0; i < age; i++ ) {
+    // also this is not good
+    const [rightWay, setRightWay] = useState(false)
+  }
+
+  const notGood = () => {
+    // and this is also illegal
+    const [x, setX] = useState(-1000)
+  }
+
+  return (
+    //...
+  )
+}
+```
