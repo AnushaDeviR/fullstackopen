@@ -143,3 +143,22 @@ const History = (props) => {
 
 - From React version 16.8.0 onwards the `state hook` was added in order to implement states to React components.
 - Before the addition of hooks (in functional components), state could only be defined as a class component.
+
+## Debugging React applications
+
+- Good practices:
+
+  - Keep the browser's developer console open all the time.
+  - Keep the code and the webpage open together at the same time and all the time.
+  - When the code fails to compile - don't write more code but rather find and fix the problem immediately.
+  - If a component is not working, always start by printing its variables out to the console. Receive the entire props object by transforming the function.
+  - Debugger is present under `Source` tab in Chrome's dev. tools.
+
+    ```jsx
+    const Button = (props) => {
+      console.log("props value is", props);
+      debugger; //allows execution to be paused when debugger is found on the line of code
+      const { handleClick, text } = props;
+      return <button onClick={handleClick}>{text}</button>;
+    };
+    ```
