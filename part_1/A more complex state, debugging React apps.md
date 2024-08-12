@@ -165,6 +165,7 @@ const History = (props) => {
 
 ## Rules of Hooks
 
+- Any function that starts with the `use` in its naming convention is a hook.
 - The `useState & useEffect` (hooks) function should not be used inside a loop, a conditional expression or any functions which doesn't define a component.
 - Hooks should only be called from the inside of a function body that defines a React component.
 
@@ -194,3 +195,12 @@ const App = () => {
   )
 }
 ```
+
+- ❌ Don't call hooks (ref. - [React Docs](https://react.dev/warnings/invalid-hook-call-warning#breaking-rules-of-hooks)):
+  - after a conditional return statement
+  - inside loops/conditions
+  - in event handlers
+  - in class components
+  - inside functions passed to `useMemo`, `useReducer`, or `useEffect`
+
+## Event Handling - Revisited 
